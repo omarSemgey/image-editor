@@ -344,6 +344,9 @@ body{
     .container{
         padding: 25px;
     }
+    .container .header .draw{
+        display: none;
+    }
     .container .wrapper{
         flex-wrap: wrap-reverse;
     }
