@@ -141,7 +141,7 @@ panelsBtn.forEach(btn => {
             document.querySelector('.top').classList.remove('top');
             document.querySelector(`.wrapper #${btn.id}`).classList.add('top');
             container.classList.remove('cropping');
-            testing();  
+            startDrawingPanel();  
         }
     })
 })
@@ -215,7 +215,7 @@ selectedColor = '#000';
 
 //drawing logic
 
-function testing(){
+function startDrawingPanel(){
     sizeSlider.addEventListener('change',() => {
         brushWidth = sizeSlider.value;
     });
@@ -261,12 +261,12 @@ function cropToFilter(){
     cropper.destroy();
     previewImg.classList.remove('editing');
     document.querySelector('.preview-img canvas').remove();
-    resetFilter();
+    resetPanelFilter();
 }
 
 function drawToFilter(){
     previewImg.src = document.querySelector('.preview-img canvas').toDataURL();
-    resetFilter();
+    resetPanelFilter();
     previewImg.classList.remove('editing');
     document.querySelector('.preview-img canvas').remove();
 }
@@ -424,7 +424,21 @@ filterOptions[0].click();
 applyFilter();
 }
 
+function resetPanelFilter(){
+    fakeBrightness = 100;
+    fakeSaturation = 100;
+    fakeGrayscale = 0;
+    fakeInversion = 0;
+    fakeRotate = 0;
+    fakeFlipHorizontal = 1;
+    fakeFlipVertical = 1;
+    filterOptions[0].click();
+    previewImg.style.transform = `rotate(${fakeRotate}deg) scale(${fakeFlipHorizontal},${fakeFlipVertical})`;
+    previewImg.style.filter = `brightness(${fakeBrightness}%) saturate(${fakeSaturation}%) invert(${fakeInversion}%) grayscale(${fakeGrayscale}%)`;
+}
+
 //drawing functions
+
 function startDraw(e){
     isDrawing = true;
     prevMouseX = e.offsetX;

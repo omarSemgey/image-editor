@@ -225,6 +225,18 @@ body{
     display: block !important;
     width: calc(100% / 1 - 15px);
 }
+.row select{
+    appearance: none;
+    border: 1px solid #000;
+    border-radius: 40px;
+    width: 100%;
+    height: 48px;
+    padding: 0px 20px;
+}
+.row select::after{
+    content: arr;
+}
+
 .crop-canvas{
     display: none !important;
 }
