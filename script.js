@@ -243,7 +243,7 @@ function startDrawingPanel(){
 
     clearCanvas.addEventListener('click',() => {
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        setCanvasBackground();
+        ctx.drawImage(previewImg,0,0,canvas.width,canvas.height);
     });
 
     canvas.addEventListener('mousedown',startDraw)
